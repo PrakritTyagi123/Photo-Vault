@@ -775,11 +775,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\PhotoVault.Services.csproj",
+      "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\PhotoVault.Services.csproj",
       "projectName": "PhotoVault.Services",
-      "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\PhotoVault.Services.csproj",
+      "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\PhotoVault.Services.csproj",
       "packagesPath": "C:\\Users\\ptmin\\.nuget\\packages\\",
-      "outputPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\obj\\",
+      "outputPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\All Apps\\VSCommunity\\Components\\NuGetPackages"
@@ -801,8 +801,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
-              "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj"
+            "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
+              "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj"
             }
           }
         }
@@ -867,5 +867,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
 }

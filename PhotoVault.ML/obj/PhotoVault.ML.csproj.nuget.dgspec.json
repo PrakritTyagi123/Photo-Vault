@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\All Github Repos\\PhotoVault\\PhotoVault.ML\\PhotoVault.ML.csproj": {}
+    "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.ML\\PhotoVault.ML.csproj": {}
   },
   "projects": {
-    "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
+    "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj",
+        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj",
         "projectName": "PhotoVault.Core",
-        "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj",
+        "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj",
         "packagesPath": "C:\\Users\\ptmin\\.nuget\\packages\\",
-        "outputPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\obj\\",
+        "outputPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\All Apps\\VSCommunity\\Components\\NuGetPackages"
@@ -80,14 +80,14 @@
         }
       }
     },
-    "E:\\All Github Repos\\PhotoVault\\PhotoVault.ML\\PhotoVault.ML.csproj": {
+    "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.ML\\PhotoVault.ML.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\PhotoVault.ML\\PhotoVault.ML.csproj",
+        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.ML\\PhotoVault.ML.csproj",
         "projectName": "PhotoVault.ML",
-        "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.ML\\PhotoVault.ML.csproj",
+        "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.ML\\PhotoVault.ML.csproj",
         "packagesPath": "C:\\Users\\ptmin\\.nuget\\packages\\",
-        "outputPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.ML\\obj\\",
+        "outputPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.ML\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\All Apps\\VSCommunity\\Components\\NuGetPackages"
@@ -109,8 +109,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
-                "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj"
+              "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
+                "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj"
               }
             }
           }

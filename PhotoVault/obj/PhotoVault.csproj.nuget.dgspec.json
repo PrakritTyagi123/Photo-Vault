@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\All Github Repos\\PhotoVault\\PhotoVault\\PhotoVault.csproj": {}
+    "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault\\PhotoVault.csproj": {}
   },
   "projects": {
-    "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
+    "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj",
+        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj",
         "projectName": "PhotoVault.Core",
-        "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj",
+        "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj",
         "packagesPath": "C:\\Users\\ptmin\\.nuget\\packages\\",
-        "outputPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\obj\\",
+        "outputPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\All Apps\\VSCommunity\\Components\\NuGetPackages"
@@ -80,14 +80,14 @@
         }
       }
     },
-    "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\PhotoVault.Services.csproj": {
+    "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\PhotoVault.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\PhotoVault.Services.csproj",
+        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\PhotoVault.Services.csproj",
         "projectName": "PhotoVault.Services",
-        "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\PhotoVault.Services.csproj",
+        "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\PhotoVault.Services.csproj",
         "packagesPath": "C:\\Users\\ptmin\\.nuget\\packages\\",
-        "outputPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\obj\\",
+        "outputPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\All Apps\\VSCommunity\\Components\\NuGetPackages"
@@ -109,8 +109,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
-                "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj"
+              "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
+                "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj"
               }
             }
           }
@@ -176,14 +176,14 @@
         }
       }
     },
-    "E:\\All Github Repos\\PhotoVault\\PhotoVault\\PhotoVault.csproj": {
+    "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault\\PhotoVault.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\PhotoVault\\PhotoVault.csproj",
+        "projectUniqueName": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault\\PhotoVault.csproj",
         "projectName": "PhotoVault",
-        "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault\\PhotoVault.csproj",
+        "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault\\PhotoVault.csproj",
         "packagesPath": "C:\\Users\\ptmin\\.nuget\\packages\\",
-        "outputPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault\\obj\\",
+        "outputPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\All Apps\\VSCommunity\\Components\\NuGetPackages"
@@ -205,11 +205,11 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
-                "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Core\\PhotoVault.Core.csproj"
+              "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj": {
+                "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Core\\PhotoVault.Core.csproj"
               },
-              "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\PhotoVault.Services.csproj": {
-                "projectPath": "E:\\All Github Repos\\PhotoVault\\PhotoVault.Services\\PhotoVault.Services.csproj"
+              "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\PhotoVault.Services.csproj": {
+                "projectPath": "E:\\All Github Repos\\PhotoVault\\Photo-Vault\\PhotoVault.Services\\PhotoVault.Services.csproj"
               }
             }
           }
