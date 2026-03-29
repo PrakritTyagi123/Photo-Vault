@@ -1,0 +1,52 @@
+## .NET / Visual Studio
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.cache
+*.rsuser
+packages/
+*.nupkg
+*.snupkg
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+## NuGet
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+## Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+
+## PhotoVault runtime data
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+## OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## IDE
+*.swp
+*.swo
+*~
+.idea/

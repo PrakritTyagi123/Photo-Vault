@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoVault", "PhotoVault.csproj", "{62157591-C7A5-4055-B69F-B073347AA9FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoVault.Core", "..\PhotoVault.Core\PhotoVault.Core.csproj", "{80EB37A7-0FC8-4DCB-B435-1E058C598AEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoVault.Services", "..\PhotoVault.Services\PhotoVault.Services.csproj", "{6AD5DA7C-3D3D-44C0-893D-A0854E31CBAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoVault.ML", "..\PhotoVault.ML\PhotoVault.ML.csproj", "{B523FFF8-54BB-466B-8AFC-7F453C383586}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoVault.Plugins", "..\PhotoVault.Plugins\PhotoVault.Plugins.csproj", "{01007B06-16F6-4745-A8AE-8605683E15BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		python_sidecar\models\captioning.py = python_sidecar\models\captioning.py
+		python_sidecar\models\clip_embeddings.py = python_sidecar\models\clip_embeddings.py
+		python_sidecar\models\depth.py = python_sidecar\models\depth.py
+		python_sidecar\download_models.py = python_sidecar\download_models.py
+		python_sidecar\models\face_detection.py = python_sidecar\models\face_detection.py
+		python_sidecar\models\nsfw_detection.py = python_sidecar\models\nsfw_detection.py
+		python_sidecar\models\ocr.py = python_sidecar\models\ocr.py
+		python_sidecar\requirements.txt = python_sidecar\requirements.txt
+		python_sidecar\server.py = python_sidecar\server.py
+		python_sidecar\models\super_resolution.py = python_sidecar\models\super_resolution.py
+		python_sidecar\models\tagging.py = python_sidecar\models\tagging.py
+		python_sidecar\models\__init__.py = python_sidecar\models\__init__.py
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62157591-C7A5-4055-B69F-B073347AA9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62157591-C7A5-4055-B69F-B073347AA9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62157591-C7A5-4055-B69F-B073347AA9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62157591-C7A5-4055-B69F-B073347AA9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80EB37A7-0FC8-4DCB-B435-1E058C598AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80EB37A7-0FC8-4DCB-B435-1E058C598AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80EB37A7-0FC8-4DCB-B435-1E058C598AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80EB37A7-0FC8-4DCB-B435-1E058C598AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AD5DA7C-3D3D-44C0-893D-A0854E31CBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD5DA7C-3D3D-44C0-893D-A0854E31CBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD5DA7C-3D3D-44C0-893D-A0854E31CBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD5DA7C-3D3D-44C0-893D-A0854E31CBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B523FFF8-54BB-466B-8AFC-7F453C383586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B523FFF8-54BB-466B-8AFC-7F453C383586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B523FFF8-54BB-466B-8AFC-7F453C383586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B523FFF8-54BB-466B-8AFC-7F453C383586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01007B06-16F6-4745-A8AE-8605683E15BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01007B06-16F6-4745-A8AE-8605683E15BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01007B06-16F6-4745-A8AE-8605683E15BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01007B06-16F6-4745-A8AE-8605683E15BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AADA10A-835A-4F95-BB48-B1E3FCFDE54F}
+	EndGlobalSection
+EndGlobal
