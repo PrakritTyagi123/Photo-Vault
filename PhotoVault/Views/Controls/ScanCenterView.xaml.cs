@@ -1,28 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using PhotoVault.ViewModels;
 
-namespace PhotoVault.Views.Controls
+namespace PhotoVault.Views.Controls;
+
+public partial class ScanCenterView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for ScanCenterView.xaml
-    /// </summary>
-    public partial class ScanCenterView : UserControl
-    {
-        public ScanCenterView()
-        {
-            InitializeComponent();
-        }
-    }
+    public ScanCenterView() { InitializeComponent(); }
+    private ScanCenterViewModel? Vm => DataContext as ScanCenterViewModel;
+    private async void RunStep_Click(object sender, RoutedEventArgs e) { if (sender is Button btn && btn.Tag is string id && Vm != null) await Vm.RunStepCommand.ExecuteAsync(id); }
 }

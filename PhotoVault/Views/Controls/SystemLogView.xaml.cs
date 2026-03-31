@@ -1,28 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using PhotoVault.ViewModels;
 
-namespace PhotoVault.Views.Controls
+namespace PhotoVault.Views.Controls;
+
+public partial class SystemLogView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for SystemLogView.xaml
-    /// </summary>
-    public partial class SystemLogView : UserControl
-    {
-        public SystemLogView()
-        {
-            InitializeComponent();
-        }
-    }
+    public SystemLogView() { InitializeComponent(); }
+    private LogViewModel? Vm => DataContext as LogViewModel;
+    private void Level_Changed(object sender, SelectionChangedEventArgs e) { if (Vm != null && sender is ComboBox cb && cb.SelectedItem is ComboBoxItem item && item.Tag is string level) Vm.SetLevelCommand.Execute(level); }
 }

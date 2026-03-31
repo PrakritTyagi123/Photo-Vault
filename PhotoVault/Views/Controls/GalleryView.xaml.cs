@@ -1,28 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using PhotoVault.Core.Models;
+using PhotoVault.ViewModels;
 
-namespace PhotoVault.Views.Controls
+namespace PhotoVault.Views.Controls;
+
+public partial class GalleryView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for GalleryView.xaml
-    /// </summary>
-    public partial class GalleryView : UserControl
-    {
-        public GalleryView()
-        {
-            InitializeComponent();
-        }
-    }
+    public GalleryView() { InitializeComponent(); }
+    private GalleryViewModel? Vm => DataContext as GalleryViewModel;
+    private void Sort_Changed(object sender, SelectionChangedEventArgs e) { if (Vm != null && sender is ComboBox cb && cb.SelectedItem is ComboBoxItem item && item.Tag is string sort) Vm.SetSortCommand.Execute(sort); }
+    private void Card_Click(object sender, MouseButtonEventArgs e) { if (sender is FrameworkElement fe && fe.DataContext is MediaItem item) Vm?.OpenViewerCommand.Execute(item); }
+    private void GoToSettings_Click(object sender, RoutedEventArgs e) { if (System.Windows.Window.GetWindow(this)?.DataContext is MainViewModel main) main.NavigateCommand.Execute("Settings"); }
 }

@@ -1,12 +1,52 @@
-﻿<UserControl x:Class="PhotoVault.Views.Controls.SettingsView"
+<UserControl x:Class="PhotoVault.Views.Controls.SettingsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PhotoVault.Views.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources><BooleanToVisibilityConverter x:Key="BoolVis"/></UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="28,24,28,28">
+            <TextBlock Text="Settings" FontSize="24" FontWeight="Bold" Margin="0,0,0,22"/>
+            <Border Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="8" Padding="18,16" Margin="0,0,0,12">
+                <StackPanel>
+                    <DockPanel Margin="0,0,0,14"><TextBlock Text="Watched Folders" FontSize="15" FontWeight="SemiBold"/><Button DockPanel.Dock="Right" Content="+ Add Folder" Style="{StaticResource BtnAccent}" Padding="12,6" HorizontalAlignment="Right" Command="{Binding AddFolderCommand}"/></DockPanel>
+                    <Border Background="{StaticResource SurfaceActiveBrush}" CornerRadius="5" Padding="12,8" Margin="0,0,0,10" Visibility="{Binding IsImporting, Converter={StaticResource BoolVis}}"><TextBlock Text="{Binding ImportStatus}" FontSize="12" Foreground="{StaticResource AccentBrush}"/></Border>
+                    <ItemsControl ItemsSource="{Binding WatchedFolders}"><ItemsControl.ItemTemplate><DataTemplate>
+                        <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,8"><DockPanel>
+                            <Button DockPanel.Dock="Right" Content="&#x2715;" Style="{StaticResource BtnDanger}" Padding="6,3" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0" Command="{Binding DataContext.RemoveFolderCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}"/>
+                            <StackPanel VerticalAlignment="Center"><TextBlock Text="{Binding Path}" FontFamily="{StaticResource MonoFont}" FontSize="12" TextTrimming="CharacterEllipsis"/><TextBlock Text="{Binding InfoText}" FontSize="10.5" Foreground="{StaticResource Text3Brush}" Margin="0,2,0,0"/></StackPanel>
+                        </DockPanel></Border>
+                    </DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+                </StackPanel>
+            </Border>
+            <Border Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="8" Padding="18,16" Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="General" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,10"><DockPanel><StackPanel><TextBlock Text="Auto-scan on startup" FontSize="13"/><TextBlock Text="Run scans when app launches" FontSize="10.5" Foreground="{StaticResource Text3Brush}"/></StackPanel><CheckBox DockPanel.Dock="Right" Style="{StaticResource ToggleSwitch}" IsChecked="{Binding AutoScanStartup}" HorizontalAlignment="Right" VerticalAlignment="Center"/></DockPanel></Border>
+                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,10"><DockPanel><StackPanel><TextBlock Text="SHA-256 tracking" FontSize="13"/><TextBlock Text="Track file integrity" FontSize="10.5" Foreground="{StaticResource Text3Brush}"/></StackPanel><CheckBox DockPanel.Dock="Right" Style="{StaticResource ToggleSwitch}" IsChecked="{Binding Sha256Tracking}" HorizontalAlignment="Right" VerticalAlignment="Center"/></DockPanel></Border>
+                </StackPanel>
+            </Border>
+            <Border Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="8" Padding="18,16" Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="AI / ML Engine" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                    <DockPanel Margin="0,0,0,10"><StackPanel><TextBlock Text="AI Server" FontSize="13"/><TextBlock Text="{Binding AiStatus}" FontSize="10.5" Foreground="{StaticResource Text3Brush}"/></StackPanel>
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Content="Start" Style="{StaticResource BtnAccent}" Padding="12,6" Margin="0,0,6,0" Command="{Binding StartAiServerCommand}"/>
+                            <Button Content="Stop" Style="{StaticResource BtnDanger}" Padding="12,6" Command="{Binding StopAiServerCommand}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <Button Content="Download AI Models" Style="{StaticResource Btn}" Padding="14,8" Command="{Binding DownloadModelsCommand}" Margin="0,0,0,6"/>
+                    <TextBlock Text="{Binding AiDownloadStatus}" FontSize="11" Foreground="{StaticResource AccentBrush}" Visibility="{Binding IsDownloadingModels, Converter={StaticResource BoolVis}}"/>
+                </StackPanel>
+            </Border>
+            <Border Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="8" Padding="18,16">
+                <StackPanel><TextBlock Text="Library Stats" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                    <WrapPanel>
+                        <StackPanel Margin="0,0,30,8"><TextBlock Text="{Binding LibraryStats.TotalItems}" FontSize="22" FontWeight="Bold"/><TextBlock Text="Total items" FontSize="10.5" Foreground="{StaticResource Text3Brush}"/></StackPanel>
+                        <StackPanel Margin="0,0,30,8"><TextBlock Text="{Binding LibraryStats.TotalSizeDisplay}" FontSize="22" FontWeight="Bold"/><TextBlock Text="Total size" FontSize="10.5" Foreground="{StaticResource Text3Brush}"/></StackPanel>
+                        <StackPanel Margin="0,0,30,8"><TextBlock Text="{Binding LibraryStats.PhotoCount}" FontSize="22" FontWeight="Bold"/><TextBlock Text="Photos" FontSize="10.5" Foreground="{StaticResource Text3Brush}"/></StackPanel>
+                        <StackPanel Margin="0,0,30,8"><TextBlock Text="{Binding LibraryStats.VideoCount}" FontSize="22" FontWeight="Bold"/><TextBlock Text="Videos" FontSize="10.5" Foreground="{StaticResource Text3Brush}"/></StackPanel>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
