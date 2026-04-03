@@ -1,0 +1,16 @@
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\bin\Debug\net8.0\PhotoVault.Services.deps.json
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\bin\Debug\net8.0\PhotoVault.Services.dll
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\bin\Debug\net8.0\PhotoVault.Services.pdb
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\bin\Debug\net8.0\PhotoVault.Core.dll
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\bin\Debug\net8.0\PhotoVault.Core.pdb
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.csproj.AssemblyReference.cache
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.AssemblyInfoInputs.cache
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.AssemblyInfo.cs
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.csproj.CoreCompileInputs.cache
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.sourcelink.json
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVau.D80F1417.Up2Date
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.dll
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\refint\PhotoVault.Services.dll
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\PhotoVault.Services.pdb
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Services\obj\Debug\net8.0\ref\PhotoVault.Services.dll

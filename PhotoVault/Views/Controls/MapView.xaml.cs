@@ -1,28 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Microsoft.Web.WebView2.Core;
+using PhotoVault.ViewModels;
 
-namespace PhotoVault.Views.Controls
+namespace PhotoVault.Views.Controls;
+
+public partial class MapView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for MapView.xaml
-    /// </summary>
-    public partial class MapView : UserControl
+    private bool _webViewReady;
+    public MapView()
     {
-        public MapView()
+        InitializeComponent();
+        DataContextChanged += OnDataContextChanged;
+        mapWebView.CoreWebView2InitializationCompleted += OnWebViewReady;
+        InitWebView();
+    }
+
+    private async void InitWebView()
+    {
+        try
         {
-            InitializeComponent();
+            var env = await CoreWebView2Environment.CreateAsync();
+            await mapWebView.EnsureCoreWebView2Async(env);
+        }
+        catch { }
+    }
+
+    private void OnWebViewReady(object? sender, CoreWebView2InitializationCompletedEventArgs e)
+    {
+        _webViewReady = e.IsSuccess;
+        if (_webViewReady) LoadMap();
+    }
+
+    private void OnDataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+    {
+        if (_webViewReady) LoadMap();
+    }
+
+    public void LoadMap()
+    {
+        if (!_webViewReady) return;
+        if (DataContext is MapViewModel vm && !string.IsNullOrEmpty(vm.MapHtml))
+        {
+            mapWebView.NavigateToString(vm.MapHtml);
         }
     }
 }

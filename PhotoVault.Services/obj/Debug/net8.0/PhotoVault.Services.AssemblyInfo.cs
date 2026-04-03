@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PhotoVault.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6672ecc7ba56cb6b8f0f4e311157636e5f988d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4cd97aa95871be3aa5cc2932a35a5cfefb1a5eb6")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhotoVault.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhotoVault.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

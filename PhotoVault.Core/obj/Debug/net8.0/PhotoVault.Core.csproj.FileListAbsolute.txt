@@ -1,0 +1,13 @@
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\bin\Debug\net8.0\PhotoVault.Core.deps.json
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\bin\Debug\net8.0\PhotoVault.Core.dll
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\bin\Debug\net8.0\PhotoVault.Core.pdb
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.csproj.AssemblyReference.cache
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.AssemblyInfoInputs.cache
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.AssemblyInfo.cs
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.csproj.CoreCompileInputs.cache
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.sourcelink.json
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.dll
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\refint\PhotoVault.Core.dll
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\PhotoVault.Core.pdb
+E:\All Github Repos\PhotoVault\Photo-Vault\PhotoVault.Core\obj\Debug\net8.0\ref\PhotoVault.Core.dll

@@ -44,10 +44,10 @@ public class ScanPipelineService
             new ScanStep { Id="vidthumb", Name="Video Thumbnails", Description="Extract keyframe from videos", DependsOn="Video Meta", StepNumber=5, IsImplemented=true },
             new ScanStep { Id="dup", Name="Duplicate Detection", Description="SHA-256 hash for exact duplicates", DependsOn="None", StepNumber=6, IsImplemented=true },
             new ScanStep { Id="qual", Name="Quality Scoring", Description="Blur detection + sharpness scoring", DependsOn="Thumbnails", StepNumber=7, IsImplemented=true },
-            new ScanStep { Id="face", Name="Face Detection", Description="Detect faces (requires AI server)", DependsOn="Thumbnails", StepNumber=8, IsImplemented=false, NeedsAi=true },
+            new ScanStep { Id="face", Name="Face Detection", Description="Detect faces (requires AI server)", DependsOn="Thumbnails", StepNumber=8, IsImplemented=true, NeedsAi=true },
             new ScanStep { Id="fgrp", Name="Face Grouping", Description="Cluster faces into people", DependsOn="Faces", StepNumber=9, IsImplemented=false, NeedsAi=true },
-            new ScanStep { Id="tag", Name="AI Tagging", Description="Object/scene tags (requires AI server)", DependsOn="Thumbnails", StepNumber=10, IsImplemented=false, NeedsAi=true },
-            new ScanStep { Id="clip", Name="CLIP Embeddings", Description="Semantic search vectors", DependsOn="Thumbnails", StepNumber=11, IsImplemented=false, NeedsAi=true },
+            new ScanStep { Id="tag", Name="AI Tagging", Description="Object/scene tags (requires AI server)", DependsOn="Thumbnails", StepNumber=10, IsImplemented=true, NeedsAi=true },
+            new ScanStep { Id="clip", Name="CLIP Embeddings", Description="Semantic search vectors", DependsOn="Thumbnails", StepNumber=11, IsImplemented=true, NeedsAi=true },
             new ScanStep { Id="vibe", Name="Vibe Detection", Description="Mood/atmosphere classification", DependsOn="Tags", StepNumber=12, IsImplemented=false, NeedsAi=true },
             new ScanStep { Id="cache", Name="Search Index", Description="Rebuild FTS5 search index", DependsOn="All above", StepNumber=13, IsImplemented=true },
         });
@@ -150,6 +150,71 @@ public class ScanPipelineService
                 case "qual":
                     await Task.Run(() => { var p = new Progress<(int done, int total)>(v => { step.Progress = v.total > 0 ? (int)(v.done * 100.0 / v.total) : 0; SetStatus($"Quality: {v.done}/{v.total}"); StepsUpdated?.Invoke(); }); _qualService.ScoreAllAsync(p, ct).Wait(); }, ct);
                     break;
+                case "face":
+                    if (!_aiService.IsRunning) { await EnsureAiRunning(); }
+                    if (_aiService.IsRunning)
+                    {
+                        var faceItems = GetMediaForAi("has_faces=0", "Photo");
+                        int fd = 0;
+                        foreach (var item in faceItems)
+                        {
+                            if (ct.IsCancellationRequested) break;
+                            var path = item.ThumbnailMedium ?? item.ThumbnailSmall ?? item.FilePath;
+                            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+                            {
+                                var faces = await _aiService.DetectFacesAsync(path);
+                                if (faces.Count > 0) UpdateFaces(item.Id, faces.Count);
+                            }
+                            fd++; step.Progress = faceItems.Count > 0 ? (int)(fd * 100.0 / faceItems.Count) : 0;
+                            SetStatus($"Faces: {fd}/{faceItems.Count}"); StepsUpdated?.Invoke();
+                        }
+                    }
+                    break;
+
+                case "tag":
+                    if (!_aiService.IsRunning) { await EnsureAiRunning(); }
+                    if (_aiService.IsRunning)
+                    {
+                        var tagItems = GetMediaForAi("has_tags=0", null);
+                        int td = 0;
+                        foreach (var item in tagItems)
+                        {
+                            if (ct.IsCancellationRequested) break;
+                            var path = item.ThumbnailMedium ?? item.ThumbnailSmall ?? item.FilePath;
+                            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+                            {
+                                var tags = await _aiService.TagAsync(path);
+                                if (tags.Count > 0) UpdateTags(item.Id, string.Join(",", tags));
+                                var caption = await _aiService.CaptionAsync(path);
+                                if (!string.IsNullOrEmpty(caption)) UpdateCaption(item.Id, caption);
+                            }
+                            td++; step.Progress = tagItems.Count > 0 ? (int)(td * 100.0 / tagItems.Count) : 0;
+                            SetStatus($"Tagging: {td}/{tagItems.Count}"); StepsUpdated?.Invoke();
+                        }
+                    }
+                    break;
+
+                case "clip":
+                    if (!_aiService.IsRunning) { await EnsureAiRunning(); }
+                    if (_aiService.IsRunning)
+                    {
+                        var clipItems = GetMediaForAi("has_clip_embedding=0", null);
+                        int cd = 0;
+                        foreach (var item in clipItems)
+                        {
+                            if (ct.IsCancellationRequested) break;
+                            var path = item.ThumbnailMedium ?? item.ThumbnailSmall ?? item.FilePath;
+                            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+                            {
+                                var emb = await _aiService.ClipEmbedAsync(path);
+                                if (emb != null) UpdateClipEmbedding(item.Id, emb);
+                            }
+                            cd++; step.Progress = clipItems.Count > 0 ? (int)(cd * 100.0 / clipItems.Count) : 0;
+                            SetStatus($"CLIP: {cd}/{clipItems.Count}"); StepsUpdated?.Invoke();
+                        }
+                    }
+                    break;
+
                 case "cache":
                     SetStatus("Rebuilding search index...");
                     await Task.Run(() => _searchService.RebuildIndex(), ct);
@@ -179,6 +244,60 @@ public class ScanPipelineService
             cmd.CommandText = "SELECT COUNT(*) FROM media"; c["cache"] = Convert.ToInt32(cmd.ExecuteScalar());
         } catch { }
         return c;
+    }
+
+    private async Task EnsureAiRunning()
+    {
+        if (!_aiService.IsRunning)
+        {
+            var ok = await _aiService.HealthCheckAsync();
+            if (!ok) { SetStatus("AI server not running. Start it from Settings."); return; }
+        }
+    }
+
+    private List<(long Id, string? ThumbnailSmall, string? ThumbnailMedium, string FilePath)> GetMediaForAi(string where, string? typeFilter)
+    {
+        var items = new List<(long, string?, string?, string)>();
+        using var cmd = _db.Connection.CreateCommand();
+        var typeWhere = typeFilter != null ? $" AND media_type='{typeFilter}'" : "";
+        cmd.CommandText = $"SELECT id, thumbnail_small, thumbnail_medium, file_path FROM media WHERE {where}{typeWhere} AND in_vault=0 ORDER BY id";
+        using var r = cmd.ExecuteReader();
+        while (r.Read()) items.Add((r.GetInt64(0), r.IsDBNull(1) ? null : r.GetString(1), r.IsDBNull(2) ? null : r.GetString(2), r.GetString(3)));
+        return items;
+    }
+
+    private void UpdateFaces(long id, int count)
+    {
+        using var cmd = _db.Connection.CreateCommand();
+        cmd.CommandText = "UPDATE media SET has_faces=1 WHERE id=@id";
+        cmd.Parameters.AddWithValue("@id", id); cmd.ExecuteNonQuery();
+    }
+
+    private void UpdateTags(long id, string tags)
+    {
+        using var cmd = _db.Connection.CreateCommand();
+        cmd.CommandText = "UPDATE media SET has_tags=1, tags=@t WHERE id=@id";
+        cmd.Parameters.AddWithValue("@t", tags); cmd.Parameters.AddWithValue("@id", id); cmd.ExecuteNonQuery();
+    }
+
+    private void UpdateCaption(long id, string caption)
+    {
+        using var cmd = _db.Connection.CreateCommand();
+        cmd.CommandText = "UPDATE media SET has_caption=1, caption=@c WHERE id=@id";
+        cmd.Parameters.AddWithValue("@c", caption); cmd.Parameters.AddWithValue("@id", id); cmd.ExecuteNonQuery();
+    }
+
+    private void UpdateClipEmbedding(long id, float[] embedding)
+    {
+        using var cmd = _db.Connection.CreateCommand();
+        cmd.CommandText = "UPDATE media SET has_clip_embedding=1 WHERE id=@id";
+        cmd.Parameters.AddWithValue("@id", id); cmd.ExecuteNonQuery();
+        // Store embedding
+        using var cmd2 = _db.Connection.CreateCommand();
+        cmd2.CommandText = "INSERT OR REPLACE INTO clip_embeddings (media_id, embedding) VALUES(@id, @emb)";
+        cmd2.Parameters.AddWithValue("@id", id);
+        cmd2.Parameters.AddWithValue("@emb", System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(embedding));
+        cmd2.ExecuteNonQuery();
     }
 }
 

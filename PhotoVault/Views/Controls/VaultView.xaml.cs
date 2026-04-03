@@ -1,28 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using PhotoVault.ViewModels;
 
-namespace PhotoVault.Views.Controls
+namespace PhotoVault.Views.Controls;
+
+public partial class VaultView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for VaultView.xaml
-    /// </summary>
-    public partial class VaultView : UserControl
-    {
-        public VaultView()
-        {
-            InitializeComponent();
-        }
-    }
+    public VaultView() { InitializeComponent(); }
+    private VaultViewModel? Vm => DataContext as VaultViewModel;
+    private void Unlock_Click(object sender, RoutedEventArgs e) { Vm?.UnlockCommand.Execute(pwdBox.Password); pwdBox.Clear(); }
+    private void SetPwd_Click(object sender, RoutedEventArgs e) { Vm?.SetPasswordCommand.Execute(pwdBox.Password); pwdBox.Clear(); }
 }

@@ -10,14 +10,20 @@ public class SearchService
 
     public void RebuildIndex()
     {
-        using var del = _db.Connection.CreateCommand();
-        del.CommandText = "DELETE FROM media_fts"; del.ExecuteNonQuery();
-
-        using var cmd = _db.Connection.CreateCommand();
-        cmd.CommandText = @"INSERT INTO media_fts(rowid, file_name, caption, tags, city, country, camera_model, vibe, ocr_text)
-            SELECT id, file_name, COALESCE(caption,''), COALESCE(tags,''), COALESCE(city,''), COALESCE(country,''),
-            COALESCE(camera_model,''), COALESCE(vibe,''), COALESCE(ocr_text,'') FROM media WHERE in_vault=0";
-        cmd.ExecuteNonQuery();
+        try
+        {
+            using var del = _db.Connection.CreateCommand();
+            del.CommandText = "DELETE FROM media_fts"; del.ExecuteNonQuery();
+        }
+        catch
+        {
+            // Recreate FTS table if it doesn't exist
+            using var create = _db.Connection.CreateCommand();
+            create.CommandText = @"CREATE VIRTUAL TABLE IF NOT EXISTS media_fts USING fts5(
+            file_name, caption, tags, city, country, camera_model, vibe, ocr_text,
+            content='media', content_rowid='id')";
+            create.ExecuteNonQuery();
+        }
     }
 
     public List<MediaItem> Search(SearchQuery q)

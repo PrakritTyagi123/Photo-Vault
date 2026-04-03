@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace PhotoVault.Core.Interfaces;
 
-namespace PhotoVault.Core.Interfaces
+public interface IFileDiscoveryService
 {
-    internal interface IFileDiscoveryService
-    {
-    }
+    Task<int> ScanFolderAsync(string folderPath, IProgress<int>? progress = null);
+    Dictionary<string, List<long>> SubfolderMap { get; }
 }
